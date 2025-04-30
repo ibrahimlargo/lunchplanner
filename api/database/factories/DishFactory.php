@@ -23,7 +23,7 @@ class DishFactory extends Factory
             'description' => $this->faker->text(),
             'ingredients' => $this->faker->text(),
             'caterer_id' =>  Caterer::query()->inRandomOrder()->first()->id,
-            'diet_preference_id' => DietPreference::factory()->create(['name ' => 'vegan',])->id,
+            'diet_preference_id' => DietPreference::query()->inRandomOrder()->first()->id,
         ];
     }
 }
