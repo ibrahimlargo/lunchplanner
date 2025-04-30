@@ -2,12 +2,15 @@
 
 namespace App\Models;
 
+use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\HasOne;
 
 class DishChoice extends Model
 {
+    use HasFactory;
+
     public function dish(): BelongsTo
     {
         return $this->belongsTo(Dish::class);
@@ -23,7 +26,8 @@ class DishChoice extends Model
         return $this->belongsTo(User::class);
     }
 
-    public function feedbackResult(): HasOne {
+    public function feedbackResult(): HasOne
+    {
         return $this->hasOne(FeedbackResult::class);
     }
 
