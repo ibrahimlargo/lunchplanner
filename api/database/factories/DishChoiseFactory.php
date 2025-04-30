@@ -20,9 +20,9 @@ class DishChoiseFactory extends Factory
     public function definition(): array
     {
         return [
-            'user_id' => User::factory()->create(),
-            'dish_id' => Dish::factory()->create(),
-            'menu_id' => Menu::factory()->create(),
+            'user_id' => User::query()->inRandomOrder()->first()->id,
+            'dish_id' => Dish::query()->inRandomOrder()->first()->id,
+            'menu_id' => Menu::query()->inRandomOrder()->first()->id,
         ];
     }
 }
