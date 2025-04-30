@@ -10,7 +10,7 @@ use Illuminate\Database\Eloquent\Factories\Factory;
 /**
  * @extends \Illuminate\Database\Eloquent\Factories\Factory<\App\Models\DishChoice>
  */
-class DishChoiseFactory extends Factory
+class DishChoiceFactory extends Factory
 {
     /**
      * Define the model's default state.
