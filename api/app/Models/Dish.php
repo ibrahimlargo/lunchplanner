@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\BelongsToMany;
@@ -9,11 +10,15 @@ use Illuminate\Database\Eloquent\Relations\HasMany;
 
 class Dish extends Model
 {
-    public function caterer(): BelongsTo {
+    use HasFactory;
+
+    public function caterer(): BelongsTo
+    {
         return $this->belongsTo(Caterer::class);
     }
 
-    public function dietPreference(): BelongsTo {
+    public function dietPreference(): BelongsTo
+    {
         return $this->belongsTo(DietPreference::class);
     }
 

@@ -20,7 +20,7 @@ class FeedbackResultFactory extends Factory
         return [
             'comment' => $this->faker->sentence(),
             'rating' => $this->faker->numberBetween(1, 5),
-            'dish_choice' => DishChoice::query()->inRandomOrder()->first() ?? DishChoice::factory()->create(),
+            'dish_choice_id' => DishChoice::factory()->create(),
         ];
     }
 }
