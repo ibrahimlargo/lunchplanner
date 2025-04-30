@@ -3,8 +3,14 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\HasMany;
 
 class Caterer extends Model
 {
-    protected $fillable = ['name', 'email', 'phone', 'order_url', 'address'];
+    public function dishes(): HasMany
+    {
+        return $this->hasMany(Dish::class);
+    }
+
+
 }
