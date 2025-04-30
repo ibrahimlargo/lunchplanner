@@ -18,7 +18,7 @@ class MenuFactory extends Factory
     {
         return [
             'date' => $this->faker->date(),
-            'additional information' => $this->faker->text(),
+            'additional_information' => $this->faker->text(),
         ];
     }
 }
