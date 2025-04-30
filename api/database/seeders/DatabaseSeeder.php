@@ -2,9 +2,15 @@
 
 namespace Database\Seeders;
 
+use App\Models\Caterer;
+use App\Models\DietPreference;
+use App\Models\Dish;
+use App\Models\FeedbackResult;
+use App\Models\Menu;
 use App\Models\User;
-// use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
+
+// use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 
 class DatabaseSeeder extends Seeder
 {
@@ -13,11 +19,28 @@ class DatabaseSeeder extends Seeder
      */
     public function run(): void
     {
-        // User::factory(10)->create();
+        User::factory()->create([
+            'name' => 'Admin User',
+            'email' => 'admin@lunch.com',
+            'is_admin' => true,
+        ]);
 
         User::factory()->create([
-            'name' => 'Test User',
-            'email' => 'test@example.com',
+            'name' => 'Worker User',
+            'email' => 'worker@lunch.com',
         ]);
+
+        User::factory(10)->create();
+        Caterer::factory(7)->create();
+
+        collect(DietPreferencesEnum::cases())->each(function ($dietPreference) {
+            DietPreference::factory()->create([
+                'name' => $dietPreference->name,
+            ]);
+        });
+
+        Dish::factory(25)->create();
+        Menu::factory(18)->create();
+        FeedbackResult::factory(20)->create();
     }
 }
