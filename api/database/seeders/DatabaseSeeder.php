@@ -2,6 +2,7 @@
 
 namespace Database\Seeders;
 
+use App\Enums\DietPreferencesEnum;
 use App\Models\Caterer;
 use App\Models\DietPreference;
 use App\Models\Dish;
@@ -35,7 +36,7 @@ class DatabaseSeeder extends Seeder
 
         collect(DietPreferencesEnum::cases())->each(function ($dietPreference) {
             DietPreference::factory()->create([
-                'name' => $dietPreference->name,
+                'name' => $dietPreference->value,
             ]);
         });
 
