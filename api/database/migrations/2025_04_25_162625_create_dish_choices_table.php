@@ -16,9 +16,9 @@ return new class extends Migration
     {
         Schema::create('dish_choices', function (Blueprint $table) {
             $table->id();
-            $table->foreignIdFor(User::class)->constrained();
-            $table->foreignIdFor(Dish::class)->constrained();
-            $table->foreignIdFor(Menu::class)->constrained();
+            $table->foreignIdFor(User::class)->constrained()->cascadeOnDelete();
+            $table->foreignIdFor(Dish::class)->constrained()->cascadeOnDelete();
+            $table->foreignIdFor(Menu::class)->constrained()->cascadeOnDelete();
             $table->timestamps();
         });
     }

@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Laravel Auth Test</title>
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+</head>
+<body>
+<h2>Laravel Auth Test</h2>
+
+<button onclick="login()">Login</button>
+<button onclick="getUser()">Get Authenticated User</button>
+
+<pre id="output"></pre>
+
+<script>
+    axios.defaults.withCredentials = true;
+    const baseURL = 'http://localhost'; // Dein Laravel Backend
+
+    function log(data) {
+        document.getElementById('output').textContent = JSON.stringify(data, null, 2);
+    }
+
+    async function login() {
+        try {
+            // 1. CSRF Token abrufen (wichtig bei Sanctum)
+            await axios.get(`${baseURL}/sanctum/csrf-cookie`);
+
+            // 2. Login
+            const response = await axios.post(`${baseURL}/api/login`, {
+                email: "test@test.de",
+                password: "password"
+            });
+
+            log({step: "Login erfolgreich", data: response.data});
+        } catch (error) {
+            log({step: "Login Fehler", error: error.response?.data || error.message});
+            console.log(error)
+        }
+    }
+
+    async function getUser() {
+        try {
+            const response = await axios.get(`${baseURL}/api/user`);
+            log({step: "User geladen", data: response.data});
+        } catch (error) {
+            log({step: "Fehler beim Laden des Users", error: error.response?.data || error.message});
+            console.log(error)
+        }
+    }
+</script>
+</body>
+</html>

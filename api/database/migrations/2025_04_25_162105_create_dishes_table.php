@@ -18,8 +18,8 @@ return new class extends Migration
             $table->string('name');
             $table->string('description');
             $table->string('ingredients');
-            $table->foreignIdFor(Caterer::class)->constrained();
-            $table->foreignIdFor(DietPreference::class)->constrained();
+            $table->foreignIdFor(Caterer::class)->constrained()->cascadeOnDelete();
+            $table->foreignIdFor(DietPreference::class)->constrained()->cascadeOnDelete();
             $table->timestamps();
         });
     }

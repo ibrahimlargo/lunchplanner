@@ -32,5 +32,16 @@ enum DietPreferencesEnum: string
         };
     }
 
+    public function toId(): int
+    {
+        return match ($this) {
+            self::Meat => 1,
+            self::Pork => 2,
+            self::Fish => 3,
+            self::Vegetarian => 4,
+            self::Vegan => 5,
+        };
+    }
+
 
 }

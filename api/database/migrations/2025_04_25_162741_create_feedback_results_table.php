@@ -16,7 +16,7 @@ return new class extends Migration
             $table->id();
             $table->string('comment');
             $table->integer('rating');
-            $table->foreignIdFor(DishChoice::class)->constrained();
+            $table->foreignIdFor(DishChoice::class)->constrained()->cascadeOnDelete();
             $table->timestamps();
         });
     }
