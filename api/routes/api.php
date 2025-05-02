@@ -36,7 +36,7 @@ Route::middleware(['auth:sanctum'])->group(function () {
             Route::get('/', [FeedbackResultController::class, 'index'])->name('index');
             Route::get('/{feedbackResult}', [FeedbackResultController::class, 'show'])->name('show');
             Route::post('/{dishChoice}', [FeedbackResultController::class, 'store'])->name('store');
-            Route::put('/{feedbackResult}', [FeedbackResultController::class, 'update'])->name('update');
+            Route::patch('/{feedbackResult}', [FeedbackResultController::class, 'update'])->name('update');
             Route::delete('/{feedbackResult}', [FeedbackResultController::class, 'destroy'])->name('destroy');
         });
     });
