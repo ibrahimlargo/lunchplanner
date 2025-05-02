@@ -15,7 +15,7 @@ Route::middleware(['auth:sanctum'])->group(function () {
             Route::get('/', [CatererController::class, 'index'])->name('index');
             Route::get('/{caterer}', [CatererController::class, 'show'])->name('show');
             Route::post('/', [CatererController::class, 'store'])->name('store');
-            Route::put('/{caterer}', [CatererController::class, 'update'])->name('update');
+            Route::patch('/{caterer}', [CatererController::class, 'update'])->name('update');
             Route::delete('/{caterer}', [CatererController::class, 'destroy'])->name('destroy');
         });
     });
@@ -25,7 +25,7 @@ Route::middleware(['auth:sanctum'])->group(function () {
             Route::get('/', [DishController::class, 'index'])->name('index');
             Route::get('/{dish}', [DishController::class, 'show'])->name('show');
             Route::post('/{caterer}', [DishController::class, 'store'])->name('store');
-            Route::put('/{dish}', [DishController::class, 'update'])->name('update');
+            Route::patch('/{dish}', [DishController::class, 'update'])->name('update');
             Route::delete('/{dish}', [DishController::class, 'destroy'])->name('destroy');
         });
     });

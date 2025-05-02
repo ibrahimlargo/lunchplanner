@@ -22,7 +22,7 @@ class DishController extends Controller
             'description' => $request->description,
             'ingredients' => $request->ingredients,
             'caterer_id' => $caterer->id,
-            'diet_preference_id' => DietPreferencesEnum::tryFrom($request->diet_preference_id)?->toId(),
+            'diet_preference_id' => DietPreferencesEnum::fromId($request->diet_preference_id)?->toId(),
         ]);
 
         return response()->noContent();
@@ -40,7 +40,8 @@ class DishController extends Controller
         $dish->name = $request->name;
         $dish->description = $request->description;
         $dish->ingredients = $request->ingredients;
-        $dish->diet_preference_id = DietPreferencesEnum::tryFrom($request->diet_preference_id)?->toId();
+        $dish->diet_preference_id = DietPreferencesEnum::fromId($request->diet_preference_id)?->toId();
+
         $dish->save();
 
         return response()->noContent();

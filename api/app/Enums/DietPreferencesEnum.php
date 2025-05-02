@@ -12,7 +12,8 @@ enum DietPreferencesEnum: string
     case Vegetarian = 'vegetarian';
     case Vegan = 'vegan';
 
-    public function getGermanName(): String {
+    public function getGermanName(): string
+    {
         return match ($this) {
             self::Meat => __('Fleisch'),
             self::Pork => __('Schweinefleisch'),
@@ -22,7 +23,8 @@ enum DietPreferencesEnum: string
         };
     }
 
-    public function getIcon(): String {
+    public function getIcon(): string
+    {
         return match ($this) {
             self::Meat => 'images/meat.png',
             self::Pork => 'images/pork.png',
@@ -40,6 +42,17 @@ enum DietPreferencesEnum: string
             self::Fish => 3,
             self::Vegetarian => 4,
             self::Vegan => 5,
+        };
+    }
+
+    public static function fromId(int $id): self
+    {
+        return match ($id) {
+            1 => self::Meat,
+            2 => self::Pork,
+            3 => self::Fish,
+            4 => self::Vegetarian,
+            5 => self::Vegan,
         };
     }
 
