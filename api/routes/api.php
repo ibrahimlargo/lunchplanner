@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\CatererController;
+use App\Http\Controllers\DishChoiceController;
 use App\Http\Controllers\DishController;
 use App\Http\Controllers\FeedbackResultController;
 use App\Http\Controllers\MenuController;
@@ -49,6 +50,16 @@ Route::middleware(['auth:sanctum'])->group(function () {
             Route::post('/', [MenuController::class, 'store'])->name('store');
             Route::patch('/{menu}', [MenuController::class, 'update'])->name('update');
             Route::delete('/{menu}', [MenuController::class, 'destroy'])->name('destroy');
+        });
+    });
+
+    Route::prefix('dishChoice')->group(function () {
+        Route::name('dishChoice.')->group(function () {
+            Route::get('/', [DishChoiceController::class, 'index'])->name('index');
+            Route::get('/{dishChoice}', [DishChoiceController::class, 'show'])->name('show');
+            Route::post('/{dish}/{menu}', [DishChoiceController::class, 'store'])->name('store');
+            Route::patch('/{dishChoice}/{dish}', [DishChoiceController::class, 'update'])->name('update');
+            Route::delete('/{dishChoice}', [DishChoiceController::class, 'destroy'])->name('destroy');
         });
     });
 
