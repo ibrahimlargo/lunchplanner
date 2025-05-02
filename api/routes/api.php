@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\CatererController;
 use App\Http\Controllers\DishController;
+use App\Http\Controllers\FeedbackResultController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
@@ -29,4 +30,16 @@ Route::middleware(['auth:sanctum'])->group(function () {
             Route::delete('/{dish}', [DishController::class, 'destroy'])->name('destroy');
         });
     });
+
+    Route::prefix('feedback')->group(function () {
+        Route::name('feedback.')->group(function () {
+            Route::get('/', [FeedbackResultController::class, 'index'])->name('index');
+            Route::get('/{feedbackResult}', [FeedbackResultController::class, 'show'])->name('show');
+            Route::post('/{dishChoice}', [FeedbackResultController::class, 'store'])->name('store');
+            Route::put('/{feedbackResult}', [FeedbackResultController::class, 'update'])->name('update');
+            Route::delete('/{feedbackResult}', [FeedbackResultController::class, 'destroy'])->name('destroy');
+        });
+    });
+
+
 });
