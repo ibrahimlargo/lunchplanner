@@ -14,7 +14,7 @@ return new class extends Migration
     {
         Schema::create('feedback_results', function (Blueprint $table) {
             $table->id();
-            $table->string('comment');
+            $table->string('comment')->nullable();
             $table->integer('rating');
             $table->foreignIdFor(DishChoice::class)->constrained()->cascadeOnDelete();
             $table->timestamps();

@@ -14,7 +14,7 @@ return new class extends Migration
         Schema::create('menus', function (Blueprint $table) {
             $table->id();
             $table->dateTime('date');
-            $table->string('additional_information');
+            $table->string('additional_information')->nullable();
             $table->timestamps();
         });
     }
