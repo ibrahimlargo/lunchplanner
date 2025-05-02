@@ -2,17 +2,17 @@
 
 namespace App\Models;
 
-use Carbon\CarbonImmutable;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\HasMany;
+use Illuminate\Support\Carbon;
 
 class Menu extends Model
 {
     use HasFactory;
 
     protected $casts = [
-        'date' => CarbonImmutable::class
+        'date' => 'datetime',
     ];
 
     public function dishes(): HasMany
