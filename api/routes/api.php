@@ -3,6 +3,7 @@
 use App\Http\Controllers\CatererController;
 use App\Http\Controllers\DishController;
 use App\Http\Controllers\FeedbackResultController;
+use App\Http\Controllers\MenuController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
@@ -38,6 +39,16 @@ Route::middleware(['auth:sanctum'])->group(function () {
             Route::post('/{dishChoice}', [FeedbackResultController::class, 'store'])->name('store');
             Route::patch('/{feedbackResult}', [FeedbackResultController::class, 'update'])->name('update');
             Route::delete('/{feedbackResult}', [FeedbackResultController::class, 'destroy'])->name('destroy');
+        });
+    });
+
+    Route::prefix('menu')->group(function () {
+        Route::name('menu.')->group(function () {
+            Route::get('/', [MenuController::class, 'index'])->name('index');
+            Route::get('/{menu}', [MenuController::class, 'show'])->name('show');
+            Route::post('/', [MenuController::class, 'store'])->name('store');
+            Route::patch('/{menu}', [MenuController::class, 'update'])->name('update');
+            Route::delete('/{menu}', [MenuController::class, 'destroy'])->name('destroy');
         });
     });
 
