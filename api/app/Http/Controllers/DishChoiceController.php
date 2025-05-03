@@ -19,11 +19,11 @@ class DishChoiceController extends Controller
         return $dishChoice->toResource();
     }
 
-    public function store(Request $request, Dish $dish, Menu $menu)
+    public function store(Request $request, Menu $menu)
     {
         DishChoice::create([
             'user_id' => $request->user()->id,
-            'dish_id' => $dish,
+            'dish_id' => $request->dish,
             'menu_id' => $menu
 
         ]);
@@ -31,10 +31,10 @@ class DishChoiceController extends Controller
         return response()->noContent();
     }
 
-    public function update(DishChoice $dishChoice, Dish $dish)
+    public function update(Request $request, DishChoice $dishChoice)
     {
         $dishChoice->update([
-            'dish_id' => $dish,
+            'dish_id' => $request->dish,
         ]);
 
         return response()->noContent();
