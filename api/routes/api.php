@@ -1,9 +1,11 @@
 <?php
 
 use App\Http\Controllers\CatererController;
+use App\Http\Controllers\DishChoiceController;
 use App\Http\Controllers\DishController;
 use App\Http\Controllers\FeedbackResultController;
 use App\Http\Controllers\PasskeyController;
+use App\Http\Controllers\MenuController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
@@ -51,4 +53,25 @@ Route::middleware(['auth:sanctum'])->group(function () {
             Route::post('/store', [PasskeyController::class, 'store'])->name('store');
         });
     });
+    Route::prefix('menu')->group(function () {
+        Route::name('menu.')->group(function () {
+            Route::get('/', [MenuController::class, 'index'])->name('index');
+            Route::get('/{menu}', [MenuController::class, 'show'])->name('show');
+            Route::post('/', [MenuController::class, 'store'])->name('store');
+            Route::patch('/{menu}', [MenuController::class, 'update'])->name('update');
+            Route::delete('/{menu}', [MenuController::class, 'destroy'])->name('destroy');
+        });
+    });
+
+    Route::prefix('dishChoice')->group(function () {
+        Route::name('dishChoice.')->group(function () {
+            Route::get('/', [DishChoiceController::class, 'index'])->name('index');
+            Route::get('/{dishChoice}', [DishChoiceController::class, 'show'])->name('show');
+            Route::post('/{menu}', [DishChoiceController::class, 'store'])->name('store');
+            Route::patch('/{dishChoice}', [DishChoiceController::class, 'update'])->name('update');
+            Route::delete('/{dishChoice}', [DishChoiceController::class, 'destroy'])->name('destroy');
+        });
+    });
+
+
 });
