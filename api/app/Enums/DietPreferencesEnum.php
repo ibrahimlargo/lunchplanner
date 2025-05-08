@@ -55,6 +55,4 @@ enum DietPreferencesEnum: string
             5 => self::Vegan,
         };
     }
-
-
 }

@@ -130,6 +130,14 @@
       <path value="$PROJECT_DIR$/api/vendor/psr/log" />
       <path value="$PROJECT_DIR$/api/vendor/laravel/breeze" />
       <path value="$PROJECT_DIR$/api/vendor/laravel/sanctum" />
+      <path value="$PROJECT_DIR$/api/vendor/spomky-labs/cbor-php" />
+      <path value="$PROJECT_DIR$/api/vendor/spomky-labs/pki-framework" />
+      <path value="$PROJECT_DIR$/api/vendor/paragonie/constant_time_encoding" />
+      <path value="$PROJECT_DIR$/api/vendor/web-auth/webauthn-lib" />
+      <path value="$PROJECT_DIR$/api/vendor/web-auth/cose-lib" />
+      <path value="$PROJECT_DIR$/api/vendor/lcobucci/clock" />
+      <path value="$PROJECT_DIR$/api/vendor/barryvdh/laravel-ide-helper" />
+      <path value="$PROJECT_DIR$/api/vendor/barryvdh/reflection-docblock" />
     </include_path>
   </component>
   <component name="PhpProjectSharedConfiguration" php_language_level="8.2" />

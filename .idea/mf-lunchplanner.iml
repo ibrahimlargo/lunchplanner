@@ -119,6 +119,14 @@
       <excludeFolder url="file://$MODULE_DIR$/api/vendor/webmozart/assert" />
       <excludeFolder url="file://$MODULE_DIR$/api/vendor/laravel/breeze" />
       <excludeFolder url="file://$MODULE_DIR$/api/vendor/laravel/sanctum" />
+      <excludeFolder url="file://$MODULE_DIR$/api/vendor/lcobucci/clock" />
+      <excludeFolder url="file://$MODULE_DIR$/api/vendor/paragonie/constant_time_encoding" />
+      <excludeFolder url="file://$MODULE_DIR$/api/vendor/spomky-labs/cbor-php" />
+      <excludeFolder url="file://$MODULE_DIR$/api/vendor/spomky-labs/pki-framework" />
+      <excludeFolder url="file://$MODULE_DIR$/api/vendor/web-auth/cose-lib" />
+      <excludeFolder url="file://$MODULE_DIR$/api/vendor/web-auth/webauthn-lib" />
+      <excludeFolder url="file://$MODULE_DIR$/api/vendor/barryvdh/laravel-ide-helper" />
+      <excludeFolder url="file://$MODULE_DIR$/api/vendor/barryvdh/reflection-docblock" />
     </content>
     <orderEntry type="inheritedJdk" />
     <orderEntry type="sourceFolder" forTests="false" />

@@ -6,7 +6,10 @@ use App\Http\Controllers\Auth\NewPasswordController;
 use App\Http\Controllers\Auth\PasswordResetLinkController;
 use App\Http\Controllers\Auth\RegisteredUserController;
 use App\Http\Controllers\Auth\VerifyEmailController;
+use App\Http\Controllers\PasskeyController;
 use Illuminate\Support\Facades\Route;
+
+Route::post('/passkeys/authenticate', [PasskeyController::class, 'authenticate'])->name('passkeys.authenticate');
 
 Route::post('/register', [RegisteredUserController::class, 'store'])
     ->middleware('guest')

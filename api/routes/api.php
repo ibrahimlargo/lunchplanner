@@ -3,8 +3,11 @@
 use App\Http\Controllers\CatererController;
 use App\Http\Controllers\DishController;
 use App\Http\Controllers\FeedbackResultController;
+use App\Http\Controllers\PasskeyController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
+
+Route::get('/passkey/authenticate', [PasskeyController::class, 'authenticateOptions']);
 
 Route::middleware(['auth:sanctum'])->group(function () {
     Route::get('/user', function (Request $request) {
@@ -41,5 +44,11 @@ Route::middleware(['auth:sanctum'])->group(function () {
         });
     });
 
-
+    Route::name('passkey.')->group(function () {
+        Route::prefix('passkey')->group(function () {
+            Route::get('/register', [PasskeyController::class, 'registerOptions']);
+            Route::delete('/delete/{passkey}', [PasskeyController::class, 'destroy'])->name('delete');
+            Route::post('/store', [PasskeyController::class, 'store'])->name('store');
+        });
+    });
 });
