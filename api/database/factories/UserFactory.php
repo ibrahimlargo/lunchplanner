@@ -29,8 +29,8 @@ class UserFactory extends Factory
             'email_verified_at' => now(),
             'password' => static::$password ??= Hash::make('password'),
             'is_admin' => false,
+            'floor' => $this->faker->numberBetween(2, 4),
             'remember_token' => Str::random(10),
-            'is_admin' => false,
         ];
     }
 

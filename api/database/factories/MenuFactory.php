@@ -18,6 +18,7 @@ class MenuFactory extends Factory
     {
         return [
             'date' => $this->faker->date(),
+            'additional_costs' => $this->faker->numberBetween(1500, 3000),
             'additional_information' => $this->faker->text(),
         ];
     }
