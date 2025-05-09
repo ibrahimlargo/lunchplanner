@@ -4,12 +4,15 @@ use App\Http\Controllers\CatererController;
 use App\Http\Controllers\DishChoiceController;
 use App\Http\Controllers\DishController;
 use App\Http\Controllers\FeedbackResultController;
-use App\Http\Controllers\PasskeyController;
 use App\Http\Controllers\MenuController;
+use App\Http\Controllers\PasskeyController;
+use App\Http\Controllers\SlackActionsController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/passkey/authenticate', [PasskeyController::class, 'authenticateOptions']);
+
+Route::post('/slack/actions', SlackActionsController::class);
 
 Route::middleware(['auth:sanctum'])->group(function () {
     Route::get('/user', function (Request $request) {
@@ -72,6 +75,4 @@ Route::middleware(['auth:sanctum'])->group(function () {
             Route::delete('/{dishChoice}', [DishChoiceController::class, 'destroy'])->name('destroy');
         });
     });
-
-
 });

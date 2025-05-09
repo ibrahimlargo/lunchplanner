@@ -127,6 +127,23 @@
       <excludeFolder url="file://$MODULE_DIR$/api/vendor/web-auth/webauthn-lib" />
       <excludeFolder url="file://$MODULE_DIR$/api/vendor/barryvdh/laravel-ide-helper" />
       <excludeFolder url="file://$MODULE_DIR$/api/vendor/barryvdh/reflection-docblock" />
+      <excludeFolder url="file://$MODULE_DIR$/api/vendor/clue/stream-filter" />
+      <excludeFolder url="file://$MODULE_DIR$/api/vendor/jane-php/json-schema-runtime" />
+      <excludeFolder url="file://$MODULE_DIR$/api/vendor/jane-php/open-api-runtime" />
+      <excludeFolder url="file://$MODULE_DIR$/api/vendor/jolicode/slack-php-api" />
+      <excludeFolder url="file://$MODULE_DIR$/api/vendor/laravel/slack-notification-channel" />
+      <excludeFolder url="file://$MODULE_DIR$/api/vendor/nyholm/psr7" />
+      <excludeFolder url="file://$MODULE_DIR$/api/vendor/php-http/client-common" />
+      <excludeFolder url="file://$MODULE_DIR$/api/vendor/php-http/discovery" />
+      <excludeFolder url="file://$MODULE_DIR$/api/vendor/php-http/httplug" />
+      <excludeFolder url="file://$MODULE_DIR$/api/vendor/php-http/message" />
+      <excludeFolder url="file://$MODULE_DIR$/api/vendor/php-http/multipart-stream-builder" />
+      <excludeFolder url="file://$MODULE_DIR$/api/vendor/php-http/promise" />
+      <excludeFolder url="file://$MODULE_DIR$/api/vendor/php-jsonpointer/php-jsonpointer" />
+      <excludeFolder url="file://$MODULE_DIR$/api/vendor/symfony/http-client" />
+      <excludeFolder url="file://$MODULE_DIR$/api/vendor/symfony/http-client-contracts" />
+      <excludeFolder url="file://$MODULE_DIR$/api/vendor/symfony/options-resolver" />
+      <excludeFolder url="file://$MODULE_DIR$/api/vendor/symfony/serializer" />
     </content>
     <orderEntry type="inheritedJdk" />
     <orderEntry type="sourceFolder" forTests="false" />

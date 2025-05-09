@@ -138,6 +138,23 @@
       <path value="$PROJECT_DIR$/api/vendor/lcobucci/clock" />
       <path value="$PROJECT_DIR$/api/vendor/barryvdh/laravel-ide-helper" />
       <path value="$PROJECT_DIR$/api/vendor/barryvdh/reflection-docblock" />
+      <path value="$PROJECT_DIR$/api/vendor/laravel/slack-notification-channel" />
+      <path value="$PROJECT_DIR$/api/vendor/nyholm/psr7" />
+      <path value="$PROJECT_DIR$/api/vendor/symfony/http-client-contracts" />
+      <path value="$PROJECT_DIR$/api/vendor/symfony/http-client" />
+      <path value="$PROJECT_DIR$/api/vendor/symfony/serializer" />
+      <path value="$PROJECT_DIR$/api/vendor/symfony/options-resolver" />
+      <path value="$PROJECT_DIR$/api/vendor/php-jsonpointer/php-jsonpointer" />
+      <path value="$PROJECT_DIR$/api/vendor/php-http/client-common" />
+      <path value="$PROJECT_DIR$/api/vendor/php-http/multipart-stream-builder" />
+      <path value="$PROJECT_DIR$/api/vendor/php-http/message" />
+      <path value="$PROJECT_DIR$/api/vendor/php-http/discovery" />
+      <path value="$PROJECT_DIR$/api/vendor/php-http/promise" />
+      <path value="$PROJECT_DIR$/api/vendor/php-http/httplug" />
+      <path value="$PROJECT_DIR$/api/vendor/jane-php/open-api-runtime" />
+      <path value="$PROJECT_DIR$/api/vendor/jane-php/json-schema-runtime" />
+      <path value="$PROJECT_DIR$/api/vendor/clue/stream-filter" />
+      <path value="$PROJECT_DIR$/api/vendor/jolicode/slack-php-api" />
     </include_path>
   </component>
   <component name="PhpProjectSharedConfiguration" php_language_level="8.2" />
