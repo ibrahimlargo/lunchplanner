@@ -16,8 +16,10 @@ return new class extends Migration
         Schema::create('dishes', function (Blueprint $table) {
             $table->id();
             $table->string('name');
+            $table->integer('price');
             $table->string('description')->nullable();
             $table->string('ingredients')->nullable();
+            $table->string('allergens')->nullable();
             $table->foreignIdFor(Caterer::class)->constrained()->cascadeOnDelete();
             $table->foreignIdFor(DietPreference::class)->constrained()->cascadeOnDelete();
             $table->timestamps();

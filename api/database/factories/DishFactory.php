@@ -20,8 +20,10 @@ class DishFactory extends Factory
     {
         return [
             'name' => $this->faker->name(),
+            'price' => $this->faker->numberBetween(500, 2000),
             'description' => $this->faker->text(),
             'ingredients' => $this->faker->text(),
+            'allergens' => $this->faker->text(),
             'caterer_id' => Caterer::query()->inRandomOrder()->first()->id,
             'diet_preference_id' => DietPreference::query()->inRandomOrder()->first()->id,
         ];
