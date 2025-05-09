@@ -40,8 +40,12 @@ class DatabaseSeeder extends Seeder
             ]);
         });
 
-        Dish::factory(25)->create();
+        Dish::factory(80)->create();
         Menu::factory(18)->create();
+        Menu::all()->each(function (Menu $menu) {
+            $caterer = Caterer::inRandomOrder()->first();
+            $menu->dishes()->attach(Dish::where('caterer_id', $caterer->id)->inRandomOrder()->take(3)->get()->pluck('id'));
+        });
         FeedbackResult::factory(20)->create();
     }
 }

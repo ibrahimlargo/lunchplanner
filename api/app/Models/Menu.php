@@ -4,12 +4,14 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 use Illuminate\Database\Eloquent\Relations\HasMany;
 
 /**
  * @property int $id
  * @property \Illuminate\Support\Carbon $date
  * @property string|null $additional_information
+ * @property int $additional_costs
  * @property \Illuminate\Support\Carbon|null $created_at
  * @property \Illuminate\Support\Carbon|null $updated_at
  * @property-read \Illuminate\Database\Eloquent\Collection<int, \App\Models\DishChoice> $dishChoices
@@ -37,13 +39,18 @@ class Menu extends Model
         'date' => 'datetime',
     ];
 
-    public function dishes(): HasMany
+    public function dishes(): BelongsToMany
     {
-        return $this->hasMany(Dish::class);
+        return $this->belongsToMany(Dish::class);
     }
 
     public function dishChoices(): HasMany
     {
         return $this->hasMany(DishChoice::class);
+    }
+
+    public function totalCosts(): int
+    {
+        return $this->dishes()->sum('price') + $this->additional_costs;
     }
 }
