@@ -2,14 +2,17 @@
 
 namespace App\Models;
 
+use App\Enums\PriceTypeEnum;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 use Illuminate\Database\Eloquent\Relations\HasMany;
 
 /**
  * @property int $id
  * @property \Illuminate\Support\Carbon $date
  * @property string|null $additional_information
+ * @property int $additional_costs
  * @property \Illuminate\Support\Carbon|null $created_at
  * @property \Illuminate\Support\Carbon|null $updated_at
  * @property-read \Illuminate\Database\Eloquent\Collection<int, \App\Models\DishChoice> $dishChoices
@@ -37,13 +40,31 @@ class Menu extends Model
         'date' => 'datetime',
     ];
 
-    public function dishes(): HasMany
+    public function dishes(): BelongsToMany
     {
-        return $this->hasMany(Dish::class);
+        return $this->belongsToMany(Dish::class);
     }
 
     public function dishChoices(): HasMany
     {
         return $this->hasMany(DishChoice::class);
     }
+
+    public function amountOfOrders(): int
+    {
+        return $this->dishChoices->count();
+    }
+
+    public function totalCosts(PriceTypeEnum $priceType): int
+    {
+        return $priceType->adjustPriceForType($this->dishChoices->sum(function ($choice) {
+            return $choice->dish->price;
+        }));
+    }
+
+    public function averageCostsPerDish(PriceTypeEnum $priceType): int
+    {
+        return $this->totalCosts($priceType)/$this->amountOfOrders();
+    }
+
 }

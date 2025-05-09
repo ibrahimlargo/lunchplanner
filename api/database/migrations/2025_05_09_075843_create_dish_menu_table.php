@@ -1,5 +1,7 @@
 <?php
 
+use App\Models\Dish;
+use App\Models\Menu;
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
@@ -11,12 +13,10 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('menus', function (Blueprint $table) {
-            $table->id();
-            $table->dateTime('date');
-            $table->integer('additional_costs')->default(0);
-            $table->string('additional_information')->nullable();
-            $table->timestamps();
+        Schema::create('dish_menu', function (Blueprint $table) {
+            $table->foreignIdFor(Menu::class)->constrained()->cascadeOnDelete();
+            $table->foreignIdFor(Dish::class)->constrained()->cascadeOnDelete();
+            $table->primary(['menu_id', 'dish_id']);
         });
     }
 
@@ -25,6 +25,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('menus');
+        Schema::dropIfExists('dish_menu');
     }
 };
