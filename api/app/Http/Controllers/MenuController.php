@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\MenuRequests\CreateMenuRequest;
+use App\Http\Requests\MenuRequests\UpdateMenuRequest;
 use App\Models\Menu;
 use Illuminate\Http\Request;
 
@@ -17,14 +19,14 @@ class MenuController extends Controller
         return $menu->toResource();
     }
 
-    public function store(Request $request)
+    public function store(CreateMenuRequest $request)
     {
         Menu::create($request->only(['date', 'additional_information']));
 
         return response()->noContent();
     }
 
-    public function update(Request $request, Menu $menu)
+    public function update(UpdateMenuRequest $request, Menu $menu)
     {
         $menu->update($request->only(['date', 'additional_information']));
 

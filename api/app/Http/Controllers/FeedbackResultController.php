@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\FeedbackResultsRequests\StoreFeedbackResultRequest;
+use App\Http\Requests\FeedbackResultsRequests\UpdateFeedBackResultRequest;
 use App\Models\DishChoice;
 use App\Models\FeedbackResult;
 use Illuminate\Http\Request;
@@ -18,7 +20,7 @@ class FeedbackResultController extends Controller
         return $feedbackResult->toResource();
     }
 
-    public function store(Request $request, DishChoice $dishChoice)
+    public function store(StoreFeedbackResultRequest $request, DishChoice $dishChoice)
     {
         FeedbackResult::create([
             'comment' => $request->comment,
@@ -29,7 +31,7 @@ class FeedbackResultController extends Controller
         return response()->noContent();
     }
 
-    public function update(Request $request, FeedbackResult $feedbackResult)
+    public function update(UpdateFeedBackResultRequest  $request, FeedbackResult $feedbackResult)
     {
         $feedbackResult->update($request->only(['comment', 'rating']));
 

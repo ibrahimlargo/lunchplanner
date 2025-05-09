@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\CatererRequests\StoreCatererRequest;
+use App\Http\Requests\CatererRequests\UpdateCatererRequest;
 use App\Http\Resources\CatererResource;
 use App\Models\Caterer;
 use Illuminate\Http\Request;
@@ -13,7 +15,7 @@ class CatererController extends Controller
         return CatererResource::collection(Caterer::all());
     }
 
-    public function store(Request $request)
+    public function store(StoreCatererRequest $request)
     {
         Caterer::create([
             'name' => $request->name,
@@ -33,7 +35,7 @@ class CatererController extends Controller
         return response()->noContent();
     }
 
-    public function update(Request $request, Caterer $caterer)
+    public function update(UpdateCatererRequest $request, Caterer $caterer)
     {
         $caterer->name = $request->name;
         $caterer->email = $request->email;
