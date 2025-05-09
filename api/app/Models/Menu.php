@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use App\Enums\PriceTypeEnum;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsToMany;
@@ -49,8 +50,21 @@ class Menu extends Model
         return $this->hasMany(DishChoice::class);
     }
 
-    public function totalCosts(): int
+    public function amountOfOrders(): int
     {
-        return $this->dishes()->sum('price') + $this->additional_costs;
+        return $this->dishChoices->count();
     }
+
+    public function totalCosts(PriceTypeEnum $priceType): int
+    {
+        return $priceType->adjustPriceForType($this->dishChoices->sum(function ($choice) {
+            return $choice->dish->price;
+        }));
+    }
+
+    public function averageCostsPerDish(PriceTypeEnum $priceType): int
+    {
+        return $this->totalCosts($priceType)/$this->amountOfOrders();
+    }
+
 }

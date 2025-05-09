@@ -17,7 +17,7 @@ class MenuFactory extends Factory
     public function definition(): array
     {
         return [
-            'date' => $this->faker->date(),
+            'date' => $this->faker->dateTimeBetween('-2 years'),
             'additional_costs' => $this->faker->numberBetween(1500, 3000),
             'additional_information' => $this->faker->text(),
         ];

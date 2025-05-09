@@ -6,6 +6,7 @@ use App\Enums\DietPreferencesEnum;
 use App\Models\Caterer;
 use App\Models\DietPreference;
 use App\Models\Dish;
+use App\Models\DishChoice;
 use App\Models\FeedbackResult;
 use App\Models\Menu;
 use App\Models\User;
@@ -31,8 +32,8 @@ class DatabaseSeeder extends Seeder
             'email' => 'worker@lunch.com',
         ]);
 
-        User::factory(10)->create();
-        Caterer::factory(7)->create();
+        User::factory(50)->create();
+        Caterer::factory(8)->create();
 
         collect(DietPreferencesEnum::cases())->each(function ($dietPreference) {
             DietPreference::factory()->create([
@@ -40,12 +41,24 @@ class DatabaseSeeder extends Seeder
             ]);
         });
 
-        Dish::factory(80)->create();
-        Menu::factory(18)->create();
+        Dish::factory(240)->create();
+        Menu::factory(80)->create();
         Menu::all()->each(function (Menu $menu) {
             $caterer = Caterer::inRandomOrder()->first();
-            $menu->dishes()->attach(Dish::where('caterer_id', $caterer->id)->inRandomOrder()->take(3)->get()->pluck('id'));
+            $dishes = Dish::where('caterer_id', $caterer->id)->inRandomOrder()->take(3)->get();
+            $menu->dishes()->attach($dishes->pluck('id'));
+            User::all()->take(random_int(35,50))->each(function (User $user) use ($menu, $dishes) {
+                DishChoice::factory()->create([
+                    'user_id' => $user->id,
+                    'menu_id' => $menu->id,
+                    'dish_id' => $dishes->random()->id,
+                ]);
+            });
         });
-        FeedbackResult::factory(20)->create();
+        DishChoice::all()->take(random_int(20,50))->each(function ($choice) {
+            FeedbackResult::factory()->create([
+                'dish_choice_id' => $choice->id,
+            ]);
+        });
     }
 }
